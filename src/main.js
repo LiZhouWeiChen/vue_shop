@@ -8,7 +8,7 @@ import TreeTable from 'vue-table-with-tree-grid';
 
 import axios from 'axios'
 //配置请求根路径
-axios.defaults.baseURL = 'http://api.zreai.com:606/api/private/v1/'
+axios.defaults.baseURL = 'http://www.ysqorz.top:8888/api/private/v1/'
 axios.interceptors.request.use( config => {
   console.log(config)
   config.headers.Authorization = window.sessionStorage.getItem('token')

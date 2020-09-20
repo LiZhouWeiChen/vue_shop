@@ -99,6 +99,7 @@
             @change="parentCateChanged"
             clearable
             change-on-select
+            ref="cascaderHandle"
           ></el-cascader>
         </el-form-item>
       </el-form>
@@ -111,13 +112,18 @@
     <!-- 修改分类对话框 -->
     <el-dialog title="修改分类" :visible.sync="editDialogVisible" width="50%" @close="editDialogClosed">
       <!-- 内容 -->
-      <el-form :model="editCateForm" :rules="editCateFormRules" ref="editCateFormRef" label-width="70px">
+      <el-form
+        :model="editCateForm"
+        :rules="editCateFormRules"
+        ref="editCateFormRef"
+        label-width="70px"
+      >
         <el-form-item label="分类名称">
           <el-input v-model="editCateForm.cat_name"></el-input>
         </el-form-item>
       </el-form>
-        <el-button @click="editDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="editCateInfo">确 定</el-button>
+      <el-button @click="editDialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="editCateInfo">确 定</el-button>
     </el-dialog>
   </div>
 </template>
@@ -336,7 +342,7 @@ export default {
         this.$message.success("更新角色信息成功！");
       });
     },
-     //根据id删除对应用户信息
+    //根据id删除对应用户信息
     async removeCateById(id) {
       //弹框询问角色是否删除
       const confirmResult = await this.$confirm(
